@@ -8,25 +8,7 @@ import { ArrowLeftIcon, ArrowRightIcon, ArrowDownIcon, ArrowUpIcon, PauseIcon, P
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata() {
-  return {
-    title: "Tetris Emoji",
-    description: "A mobile‑friendly Tetris clone built with Next.js, Shadcn UI, and Tailwind CSS.",
-    other: {
-      "fc:miniapp": JSON.stringify({
-        version: "next",
-        imageUrl: `${process.env.NEXT_PUBLIC_URL}/icon.png`,
-        ogTitle: "Tetris Emoji",
-        ogDescription: "A mobile‑friendly Tetris clone built with Next.js, Shadcn UI, and Tailwind CSS.",
-        ogImageUrl: `${process.env.NEXT_PUBLIC_URL}/icon.png`,
-        button: {
-          label: "Play",
-          url: `${process.env.NEXT_PUBLIC_URL}/`,
-        },
-      }),
-    },
-  };
-}
+/* Removed generateMetadata export to avoid client/server conflict */
 
 type Stage = "welcome" | "game" | "results";
 
