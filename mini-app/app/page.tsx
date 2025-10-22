@@ -185,7 +185,7 @@ export default function Page() {
   };
 
   const shareScore = () => {
-    const url = `https://warpcast.com/~/compose?text=I+scored+${score}+points+in+Tetris+Emoji!`;
+    const url = `https://warpcast.com/~/compose?text=I+scored+${score}+points+in+Falling+Emojis!`;
     window.open(url, "_blank");
   };
 
@@ -202,9 +202,8 @@ export default function Page() {
           if (cell === EMPTY_CELL) return;
           const boardX = currentPiece.x + c;
           const boardY = currentPiece.y + r;
-          if (boardY >= 0 && boardY < BOARD_HEIGHT && boardX >= 0 && boardX < BOARD_WIDTH) {
-            displayBoard[boardY][boardX] = cell;
-          }
+          if (boardY < 0 || boardY >= BOARD_HEIGHT || boardX < 0 || boardX >= BOARD_WIDTH) return;
+          displayBoard[boardY][boardX] = cell;
         });
       });
     }
@@ -215,7 +214,7 @@ export default function Page() {
             key={idx}
             className={cn(
               "w-8 h-8 flex items-center justify-center rounded-sm",
-              cell !== EMPTY_CELL ? "bg-primary text-primary-foreground" : "bg-muted"
+              cell !== EMPTY_CELL ? "bg-yellow-400 text-black" : "bg-transparent"
             )}
           >
             {renderCell(cell)}
@@ -237,7 +236,7 @@ export default function Page() {
                 key={`${r}-${c}`}
                 className={cn(
                   "w-6 h-6 flex items-center justify-center rounded-sm",
-                  cell !== EMPTY_CELL ? "bg-primary text-primary-foreground" : "bg-muted"
+                  cell !== EMPTY_CELL ? "bg-yellow-400 text-black" : "bg-transparent"
                 )}
               >
                 {renderCell(cell)}
@@ -329,8 +328,8 @@ export default function Page() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 text-white">
       {stage === "welcome" && (
         <Card className="p-8 max-w-md text-center">
-          <h1 className="text-3xl font-bold mb-4">Tetris Emoji</h1>
-          <p className="mb-6">A mobile‑friendly Tetris clone built with Next.js, Shadcn UI, and Tailwind CSS.</p>
+          <h1 className="text-3xl font-bold mb-4">Falling Emojis</h1>
+          <p className="mb-6">A mobile‑friendly emoji‑based game built with Next.js, Shadcn UI, and Tailwind CSS.</p>
           <Button size="lg" onClick={startGame} className="w-full">
             <PlayIcon className="mr-2 h-4 w-4" /> Start Game
           </Button>
